@@ -7,14 +7,14 @@ import '../style/paperAdjusted.css'
 import '../style/grid.css';
 
 // Components
-import Boards from './board/boards';
+import Boards from './boardIndex/boards';
 
 // Reducers
 
 // Other
 
 
-class App extends Component {
+class BoardIndex extends Component {
   render() {
     return (
       <div className="container">
@@ -29,4 +29,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default BoardIndex;

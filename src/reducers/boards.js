@@ -1,23 +1,23 @@
-import {FETCH_BOARDS,FETCH_BOARD,CREATE_BOARD,DELETE_BOARD} from '../actions';
+import { CREATE_LIST, DELETE_LIST,CREATE_BOARD,DELETE_BOARD} from '../actions';
 import _ from 'lodash';
 export default function(state=[], action){
   console.log(action);
   switch(action.type){
     
     case CREATE_BOARD:
-      return [...state, {name: action.payload.name}];
+      const b = action.payload;
+      return [...state, {id: b.id,name: b.name,description: b.description,lists:[]}];
     case DELETE_BOARD:
-      return state.filter((board)=>{
-        console.log(board);
-        console.log(action.payload.name);
-        return board.name !== action.payload.name
+      return state.filter((board)=>{        
+        return board.id !== action.payload;
       })
+    case CREATE_LIST:
+      const l = action.payload;
+      return 
 
-    case FETCH_BOARD:
-      console.log("fetch board reducer");
+
       break;
-
-    case FETCH_BOARDS:
+    case DELETE_LIST:
       console.log("fetch boards reducer");
       break;
     default:

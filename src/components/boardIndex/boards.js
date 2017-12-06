@@ -17,15 +17,16 @@ class Boards extends Component {
   renderBoards(){ 
     return this.props.boards.map((board,key) =>{
       return (
-        <Board key="b" board={board} />
+        <Board key={key} board={board} />
       );
     })
   }
   render() {
     return (
       <div className="row flex-top ">
-        <BoardCreator key="a"/>
         {this.renderBoards()}
+        <BoardCreator key={Date.now()}/>
+        
       </div>      
     );
   }

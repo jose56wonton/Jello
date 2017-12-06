@@ -10,7 +10,8 @@ import promise from 'redux-promise'
 
 
 // Components
-import App from './components/App';
+import BoardIndex from './components/boardIndex';
+import BoardShow from './components/boardShow';
 
 // Reducers
 import reducers from './reducers';
@@ -26,7 +27,8 @@ ReactDOM.render(
 <Provider store={createStoreWithMiddleware(reducers)}>
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={App} />
+      <Route path="/board/:name" component={BoardShow}/>
+      <Route path="/" component={BoardIndex} />
     </Switch>
   </BrowserRouter>
 </Provider>

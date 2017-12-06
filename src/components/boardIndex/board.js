@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
 // Styles
 // Components
 
@@ -15,11 +16,10 @@ import * as actions from '../../actions';
 class Board extends Component {
   constructor(props) {
     super(props);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
-  onSubmit(e) {
-    e.preventDefault();
-    this.props.deleteBoard(this.props.board);
+  onDelete() {
+    this.props.deleteBoard(this.props.board.id);
   }
   render() {
     var cardStyles = {
@@ -29,29 +29,28 @@ class Board extends Component {
     if(!board)
       return null;
     
-    return (
-      
+    return (      
       <div className="card col sm-6 md-4" style={cardStyles}>
-        <form className="card-body" onSubmit={this.onSubmit}>
+        <div className="card-body">
           <div className="row">
             <div className="col sm-12">
               <div className="form-group" >
                 <h3 ref="name">Name: {board.name}</h3>
+                <p>Description: {board.description}</p>
                 <h5>Lists: 10</h5>
                 <h5>Items: 50</h5>
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="col sm-6">
-              <div className="form-group" >
-                <button className="btn-danger" type="submit" >Remove</button>
-              </div>
+            <div className="col sm-7">
+              <Link className="btn-block paper-btn btn-success" to={`/board/${board.id}`}>View</Link>
             </div>
-          </div>
-
-          
-        </form>
+            <div className="col col-fill">
+              <button onClick={this.onDelete} className=" btn-block btn-danger" type="submit" >X</button>
+            </div>
+          </div>         
+        </div>
       </div>
     );
   }

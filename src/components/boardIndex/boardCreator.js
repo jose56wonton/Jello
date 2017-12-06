@@ -19,7 +19,9 @@ class BoardCreator extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    this.props.createBoard({ name: document.getElementById('name').value });
+    this.props.createBoard({ id: Date.now(),
+                             name: document.getElementById('name').value,
+                             description: document.getElementById('description').value});
    
   } 
   render() {
@@ -29,11 +31,17 @@ class BoardCreator extends Component {
     return (      
       <div className="card col sm-6 md-4" style={cardStyles}>
           <form className="card-body" onSubmit={this.onSubmit}>
-
             <div className="row">
               <div className="col sm-12">
                 <div className="form-group" >
                   <input id="name" className="input-block" type="text" placeholder="Board Name" />
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col sm-12">
+                <div className="form-group" >
+                  <textarea id="description" className="input-block" placeholder="Board Description"></textarea>
                 </div>
               </div>
             </div>
