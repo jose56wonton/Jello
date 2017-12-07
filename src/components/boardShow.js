@@ -7,15 +7,13 @@ import '../style/paperAdjusted.css'
 import '../style/grid.css';
 
 // Components
-
+import Lists from './boardShow/lists';
 // Reducers
 
 // Other
 
 
-class BoardShow extends Component {
-  
-
+class BoardShow extends Component{ 
   render() {
     const board = this.props.board;
     if(!board){
@@ -27,7 +25,7 @@ class BoardShow extends Component {
           <h1>{board.name}</h1>
           <h3>{board.description}</h3>
         </header>
-
+        <Lists boardId={this.props.board.id} />
 
       </div>
     );

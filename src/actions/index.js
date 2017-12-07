@@ -17,14 +17,13 @@ export function deleteBoard(values){
 export const CREATE_LIST = "create_list";
 export const DELETE_LIST = "delete_list";
 
-export function createList(boardId, values){
-  values = {...values,board:boardId};
+export function createList(values){  
   return {
     type: CREATE_LIST,
     payload: values
   }
 }
-export function createList(values) {
+export function deleteList(values) {
   return {
     type: DELETE_LIST,
     payload: values
