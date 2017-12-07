@@ -14,18 +14,14 @@ import List from './list';
 
 
 class Lists extends Component {  
-  renderLists(){ 
-   
-    const what =  this.props.lists.map((list,key) =>{
+  renderLists(){    
+    return this.props.lists.map((list,key) =>{
       if(this.props.boardId == list.boardId){
         return (
           <List key={key} list={list} />
         );
       }
     })
-    console.log(what);
-    return what;
-    
   }
   render() {
     return (

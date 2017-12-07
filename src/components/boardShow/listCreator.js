@@ -14,24 +14,22 @@ import * as actions from '../../actions';
 class ListCreator extends Component {
   constructor(props) {
     super(props);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onCreate = this.onCreate.bind(this);
   }
-  onSubmit(e) {
-    e.preventDefault();
-    //ownProps.match.params.name
+  onCreate(e) {
     this.props.createList({
       boardId: this.props.boardId,
       id: Date.now(),
       name: document.getElementById('listName').value
     });
-  }d
+  }
   render() {
     var cardStyles = {
       width: '12rem'
     };    
     return (
       <div className="card col sm-6 md-4" style={cardStyles}>
-        <form className="card-body" onSubmit={this.onSubmit}>
+        <form className="card-body" >
           <div className="row">
             <div className="col sm-12">
               <div className="form-group" >
@@ -41,7 +39,7 @@ class ListCreator extends Component {
           </div>          
           <div className="row">
             <div className="col sm-12">
-              <button className="btn-success btn-block">Create List!</button>
+              <button onClick={this.onCreate} className="btn-success btn-block">Create List!</button>
             </div>
           </div>
         </form>

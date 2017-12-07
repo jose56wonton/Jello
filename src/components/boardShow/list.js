@@ -16,18 +16,41 @@ import * as actions from '../../actions';
 class List extends Component {
   constructor(props) {
     super(props);
+    this.state={
+      taskInput: ''
+    };
     this.onDelete = this.onDelete.bind(this);
     this.onAdd = this.onAdd.bind(this);
   }
   onDelete() {
     this.props.deleteList(this.props.list.id);
   }
-  onAdd(){
-    if(e.key==="Enter"){
-      console.log("hereerqewre")
-    }
+  onAdd(e){
+    if(e.key === "Enter"){
+      this.props.createTask({
+        listId: this.props.list.id,
+        boardId: this.props.list.boardId,
+        id: Date.now(),
+        name: this.state.taskInput
+      });
+    }     
   }
-  
+  updateInputValue(e) {
+    console.log("updatetaskinput")
+    console.log(e.target.value);
+    this.setState({
+      taskInput: e.target.value
+    });
+  }
+  renderTasks(){
+    return this.props.tasks.map((task,key) =>{
+      if(this.props.list.id == task.listId){
+        return (
+          <div className="col sm-12" key={key}>{task.name}</div>
+        );
+      }
+    })
+  }
   render() {
     var cardStyles = {
       width: '12rem'
@@ -41,13 +64,11 @@ class List extends Component {
         <div className="card-body">
           <p>{list.name}</p>
           <div className="row flex-center child-borders">
-            <div className="sm-12 col">1</div>
-            <div className="sm-12 col">2</div>
-            <div className="sm-12 col">3</div>
+            {this.renderTasks()}
             <div className="col sm-12">
-              <form className="form-group">              
-                <input className="input-block" onKeyPress={this.onAdd} type="text" />
-              </form>
+              <div  className="form-group">              
+                <input onChange={evt => this.updateInputValue(evt)} onKeyPress={this.onAdd} className="input-block" type="text" />
+              </div>
             </div>
           </div>
           <div className="row">
@@ -61,7 +82,7 @@ class List extends Component {
   }
 }
 function mapStateToProps(state,ownProps){
-  return {list: ownProps.list}
+  return {list: ownProps.list,tasks: state.tasks};
 }
 
 export default connect(mapStateToProps, actions)(List);

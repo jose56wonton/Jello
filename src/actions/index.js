@@ -11,8 +11,7 @@ export function deleteBoard(values){
     type: DELETE_BOARD,
     payload: values
   }
-}
-
+} 
 
 export const CREATE_LIST = "create_list";
 export const DELETE_LIST = "delete_list";
@@ -26,6 +25,22 @@ export function createList(values){
 export function deleteList(values) {
   return {
     type: DELETE_LIST,
+    payload: values
+  }
+}
+
+export const CREATE_TASK = "create_list";
+export const DELETE_TASK = "delete_list";
+
+export function createTask(values){  
+  return {
+    type: CREATE_TASK,
+    payload: values
+  }
+}
+export function deleteTask(values) {
+  return {
+    type: DELETE_TASK,
     payload: values
   }
 }
