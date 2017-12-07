@@ -42,12 +42,15 @@ class List extends Component {
       taskInput: e.target.value
     });
   }
+  onToggle(task){
+    this.props.toggleTask(task);
+  }
   renderTasks(){
-    return this.props.tasks.map((task,key) =>{
-      if(this.props.list.id == task.listId){
-        return (
-          <div className="col sm-12" key={key}>{task.name}</div>
-        );
+    return this.props.tasks.map((task,key) =>{      
+      if(this.props.list.id === task.listId){
+        return (    
+          <button key={key} onClick={() => this.onToggle(task)} className={`btn-block ${task.completed ? 'btn-primary' : 'btn-secondary'}`}>{task.name}</button>
+       );
       }
     })
   }
@@ -58,24 +61,26 @@ class List extends Component {
     const list = this.props.list;
     if(!list)
       return null;
-    console.log(this.props);
     return (      
       <div className="card col sm-6 md-4" style={cardStyles}>
         <div className="card-body">
-          <p>{list.name}</p>
+          <div className="row">
+            <div className="col sm-6">
+              <h4>{list.name}</h4>
+            </div>
+            <div className="col sm-6">
+              <button onClick={this.onDelete} className=" btn-block btn-danger" type="submit" >X</button>
+            </div>
+          </div>          
           <div className="row flex-center child-borders">
             {this.renderTasks()}
-            <div className="col sm-12">
-              <div  className="form-group">              
+            <div className="col sm-12 ">
+              <div  className="form-group ">              
                 <input onChange={evt => this.updateInputValue(evt)} onKeyPress={this.onAdd} className="input-block" type="text" />
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col col-fill">
-              <button onClick={this.onDelete} className=" btn-block btn-danger" type="submit" >X</button>
-            </div>
-          </div>         
+                 
         </div>
       </div>
     );
