@@ -18,8 +18,13 @@ class BoardIndex extends Component {
   render() {
     return (
       <div className="container">
-        <header className="App-header">
-          <h1 className="App-title">Jello</h1>
+        <header>
+          <div className="row">
+            <div className="col sm-12">
+              <h1 className="">Jello</h1>
+            </div>
+            
+          </div>
         </header>
         
         <Boards/> 

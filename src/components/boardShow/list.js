@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Link } from 'react-router-dom';
 // Styles
 // Components
 
@@ -24,6 +23,7 @@ class List extends Component {
   }
   onDelete() {
     this.props.deleteList(this.props.list.id);
+    this.props.deleteTasks(this.props.list.id);
   }
   onAdd(e){
     if(e.key === "Enter"){
@@ -33,17 +33,21 @@ class List extends Component {
         id: Date.now(),
         name: this.state.taskInput
       });
+      this.setState({
+        taskInput: ''
+      })
     }     
   }
   updateInputValue(e) {
-    console.log("updatetaskinput")
-    console.log(e.target.value);
     this.setState({
       taskInput: e.target.value
     });
   }
   onToggle(task){
-    this.props.toggleTask(task);
+    if(task.completed)
+      this.props.deleteTask(task.id)
+    else 
+      this.props.toggleTask(task);
   }
   renderTasks(){
     return this.props.tasks.map((task,key) =>{      
@@ -52,6 +56,7 @@ class List extends Component {
           <button key={key} onClick={() => this.onToggle(task)} className={`btn-block ${task.completed ? 'btn-primary' : 'btn-secondary'}`}>{task.name}</button>
        );
       }
+      return null;
     })
   }
   render() {
@@ -72,13 +77,9 @@ class List extends Component {
               <button onClick={this.onDelete} className=" btn-block btn-danger" type="submit" >X</button>
             </div>
           </div>          
-          <div className="row flex-center child-borders">
-            {this.renderTasks()}
-            <div className="col sm-12 ">
-              <div  className="form-group ">              
-                <input onChange={evt => this.updateInputValue(evt)} onKeyPress={this.onAdd} className="input-block" type="text" />
-              </div>
-            </div>
+          <div className="row flex-center">
+            {this.renderTasks()} 
+            <input onChange={evt => this.updateInputValue(evt)} value={this.state.taskInput} onKeyPress={this.onAdd} className="input-block" type="text" />
           </div>
                  
         </div>

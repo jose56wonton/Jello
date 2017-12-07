@@ -7,3 +7,39 @@
 .paper-btn{
   text-align: center;
 }
+
+.input-block {
+  display: block;
+  width: 100%
+}
+
+
+
+input,textarea {
+  align-self: center;
+  background: 0 0;
+  transition: all .5s ease,background-color .1s ease;
+  color: #41403e;
+  display: inline;
+  outline: 0;
+  border: solid 2px #41403e;
+  border: 2px solid #41403e;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius: 15px 255px;
+  font-size: 1rem;
+  padding: .75rem .75rem;
+  cursor: pointer;
+  -webkit-box-shadow: 15px 28px 25px -18px rgba(0,0,0,.2);
+  -moz-box-shadow: 15px 28px 25px -18px rgba(0,0,0,.2);
+  box-shadow: 15px 28px 25px -18px rgba(0,0,0,.2);
+  transition: all .5s ease
+}
+input:hover,
+textarea:hover {
+  -webkit-box-shadow: 2px 8px 8px -5px rgba(0,0,0,.3);
+  -moz-box-shadow: 2px 8px 8px -5px rgba(0,0,0,.3);
+  box-shadow: 2px 8px 8px -5px rgba(0,0,0,.3);
+  transform: translate(0,2px)
+}

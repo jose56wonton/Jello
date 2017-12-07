@@ -25,20 +25,22 @@ class Board extends Component {
     var cardStyles = {
       width: '12rem'
     };
+    
     const board = this.props.board;
     if(!board)
       return null;
-    
+    const listCount = this.props.lists.filter((list) => { return list.boardId === board.id; }).length;
+    const taskCount = this.props.tasks.filter((task) => { return task.boardId === board.id; }).length;      
     return (      
       <div className="card col sm-6 md-4" style={cardStyles}>
         <div className="card-body">
           <div className="row">
             <div className="col sm-12">
               <div className="form-group" >
-                <h3 ref="name">Name: {board.name}</h3>
-                <p>Description: {board.description}</p>
-                <h5>Lists: 10</h5>
-                <h5>Items: 50</h5>
+                <h3 ref="name">{board.name}</h3>
+                <p>{board.description}</p>
+                <h5>Lists: {listCount}</h5>
+                <h5>Items: {taskCount}</h5>
               </div>
             </div>
           </div>
@@ -56,4 +58,12 @@ class Board extends Component {
   }
 }
 
-export default connect(null, actions)(Board);
+function mapStateToProps(state,ownProps){
+  return {
+    board: ownProps.board,
+    tasks: state.tasks,
+    lists: state.lists,
+  }
+}
+
+export default connect(mapStateToProps, actions)(Board);

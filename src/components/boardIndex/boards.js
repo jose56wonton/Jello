@@ -1,5 +1,4 @@
 // Libraries
-import _ from 'lodash';
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 // Styles

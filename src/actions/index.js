@@ -31,6 +31,7 @@ export function deleteList(values) {
 
 export const CREATE_TASK = "create_task";
 export const DELETE_TASK = "delete_task";
+export const DELETE_TASKS = "delete_tasks";
 export const TOGGLE_TASK = "toggle_task";
 
 export function createTask(values){  
@@ -42,6 +43,12 @@ export function createTask(values){
 export function deleteTask(values) {
   return {
     type: DELETE_TASK,
+    payload: values
+  }
+}
+export function deleteTasks(values){
+  return {
+    type: DELETE_TASKS,
     payload: values
   }
 }

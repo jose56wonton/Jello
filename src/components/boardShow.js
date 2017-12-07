@@ -1,6 +1,7 @@
 // Libraries
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 // Styles
 import '../style/paper.css';
 import '../style/paperAdjusted.css'
@@ -21,18 +22,27 @@ class BoardShow extends Component{
     }
     return (
       <div className="container">
-        <header className="App-header">
-          <h1>{board.name}</h1>
-          <h3>{board.description}</h3>
+        <header>
+          <div className="row flex-middle">
+            <div className="col sm-10">
+              <h1 className="">Jello - {board.name}</h1>
+            </div>
+            <div className="col sm-2 ">
+              <Link className="paper-btn btn-block btn-danger " to={`/`}>Back</Link>
+              
+            </div>
+          </div>          
         </header>
+        
         <Lists boardId={this.props.board.id} />
-
       </div>
     );
   }
 }
 function mapStateToProps(state,ownProps){  
-  return {board: state.boards.filter((obj)=>{return obj.id == ownProps.match.params.name})[0]};
+  const board =  {board: state.boards.filter((obj)=>{return obj.id == ownProps.match.params.name})[0]};
+  console.log(board);
+  return board;
 }
 
 export default connect(mapStateToProps)(BoardShow);

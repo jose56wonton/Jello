@@ -1,5 +1,4 @@
 // Libraries
-import _ from 'lodash';
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 // Styles
@@ -15,12 +14,13 @@ import List from './list';
 
 class Lists extends Component {  
   renderLists(){    
-    return this.props.lists.map((list,key) =>{
-      if(this.props.boardId == list.boardId){
-        return (
+    return this.props.lists.map((list,key) => {
+      if(this.props.boardId === list.boardId){
+        return (          
           <List key={key} list={list} />
         );
       }
+      return null;
     })
   }
   render() {
