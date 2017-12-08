@@ -22,13 +22,10 @@ class BoardIndex extends Component {
           <div className="row">
             <div className="col sm-12">
               <h1 className="">Jello</h1>
-            </div>
-            
+            </div>            
           </div>
-        </header>
-        
-        <Boards/> 
-        
+        </header>        
+        <Boards/>         
       </div>
     );
   }

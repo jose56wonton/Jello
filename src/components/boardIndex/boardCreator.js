@@ -25,11 +25,9 @@ class BoardCreator extends Component {
    
   } 
   render() {
-    var cardStyles = {
-      width: '12rem'
-    };
+   
     return (      
-      <div className="card col sm-6 md-4" style={cardStyles}>
+      <div className="card">
           <form className="card-body" onSubmit={this.onSubmit}>
             <div className="row">
               <div className="col sm-12">

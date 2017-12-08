@@ -17,18 +17,16 @@ class ListCreator extends Component {
     this.onCreate = this.onCreate.bind(this);
   }
   onCreate(e) {
+    e.preventDefault();
     this.props.createList({
       boardId: this.props.boardId,
       id: Date.now(),
       name: document.getElementById('listName').value
     });
   }
-  render() {
-    var cardStyles = {
-      width: '12rem'
-    };    
+  render() {        
     return (
-      <div className="card col sm-6 md-4" style={cardStyles}>
+      <div className="card">
         <form className="card-body" >
           <div className="row">
             <div className="col sm-12">

@@ -24,6 +24,10 @@ class List extends Component {
   onDelete() {
     this.props.deleteList(this.props.list.id);
     this.props.deleteTasks(this.props.list.id);
+    
+  }
+  componentDidUpdate(){
+    this.props.grid.updateLayout();
   }
   onAdd(e){
     if(e.key === "Enter"){
@@ -36,7 +40,8 @@ class List extends Component {
       this.setState({
         taskInput: ''
       })
-    }     
+      console.log("hey");      
+    }    
   }
   updateInputValue(e) {
     this.setState({
@@ -60,14 +65,11 @@ class List extends Component {
     })
   }
   render() {
-    var cardStyles = {
-      width: '12rem'
-    };
     const list = this.props.list;
     if(!list)
       return null;
     return (      
-      <div className="card col sm-6 md-4" style={cardStyles}>
+      <div className="card">
         <div className="card-body">
           <div className="row">
             <div className="col sm-6">
@@ -80,15 +82,16 @@ class List extends Component {
           <div className="row flex-center">
             {this.renderTasks()} 
             <input onChange={evt => this.updateInputValue(evt)} value={this.state.taskInput} onKeyPress={this.onAdd} className="input-block" type="text" />
-          </div>
-                 
+          </div>                 
         </div>
       </div>
     );
   }
 }
 function mapStateToProps(state,ownProps){
-  return {list: ownProps.list,tasks: state.tasks};
+  return {list: ownProps.list,
+          tasks: state.tasks,
+          grid: ownProps.grid};
 }
 
 export default connect(mapStateToProps, actions)(List);

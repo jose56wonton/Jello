@@ -22,9 +22,7 @@ class Board extends Component {
     this.props.deleteBoard(this.props.board.id);
   }
   render() {
-    var cardStyles = {
-      width: '12rem'
-    };
+   
     
     const board = this.props.board;
     if(!board)
@@ -32,7 +30,7 @@ class Board extends Component {
     const listCount = this.props.lists.filter((list) => { return list.boardId === board.id; }).length;
     const taskCount = this.props.tasks.filter((task) => { return task.boardId === board.id; }).length;      
     return (      
-      <div className="card col sm-6 md-4" style={cardStyles}>
+      <div className="card " >
         <div className="card-body">
           <div className="row">
             <div className="col sm-12">

@@ -1,6 +1,7 @@
 // Libraries
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import StackGrid from 'react-stack-grid';
 // Styles
 // Components
 import BoardCreator from './boardCreator';
@@ -16,17 +17,16 @@ class Boards extends Component {
   renderBoards(){ 
     return this.props.boards.map((board,key) =>{
       return (
-        <Board key={key} board={board} />
+        <Board  key={key} board={board} />
       );
     })
   }
   render() {
     return (
-      <div className="row flex-top ">
+      <StackGrid columnWidth={315}>
         {this.renderBoards()}
-        <BoardCreator key={Date.now()}/>
-        
-      </div>      
+        <BoardCreator key={Date.now()}/>        
+      </StackGrid>      
     );
   }
 }

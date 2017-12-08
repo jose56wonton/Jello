@@ -1,10 +1,12 @@
 // Libraries
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import StackGrid from 'react-stack-grid';
 // Styles
 // Components
 import ListCreator from './listCreator';
 import List from './list';
+
 // Reducers
 
 // Actions
@@ -17,7 +19,7 @@ class Lists extends Component {
     return this.props.lists.map((list,key) => {
       if(this.props.boardId === list.boardId){
         return (          
-          <List key={key} list={list} />
+          <List grid={this.grid} key={key} list={list} />
         );
       }
       return null;
@@ -25,10 +27,11 @@ class Lists extends Component {
   }
   render() {
     return (
-      <div className="row flex-top ">
-        {this.renderLists()}
-        <ListCreator boardId={this.props.boardId} key={Date.now()}/>        
-      </div>      
+      <StackGrid  gridRef={grid => this.grid = grid} columnWidth={315}>
+        
+        {this.renderLists()}        
+        <ListCreator boardId={this.props.boardId} key={300}/>           
+      </StackGrid>     
     );
   }
 }
