@@ -8,7 +8,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/jello-server");
 app.use(bodyParser.json());
 
-app.use('/api', require('./routes/api'));
+app.use('/api', require('./routes/user_routes'));
 
 app.use((err,req,res,next) => {
   res.status(422).send({error: err.message});

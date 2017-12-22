@@ -11,7 +11,11 @@ const UserSchema = new Schema({
     type: String,
     required: [true,'Password field is required']
   },
-  boards: [Board]
+  boards: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'boards',
+    required: [true,'Password field is required']
+  }
 });
 
 const User = mongoose.model('user',UserSchema);

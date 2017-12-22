@@ -7,7 +7,10 @@ const ListSchema = new Schema({
     type: String,
     required: [true,'Title field is required']
   },
-  tasks: [Task]
+  tasks: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'boards'
+  }
 });
 
 const List = mongoose.model('list',ListSchema);

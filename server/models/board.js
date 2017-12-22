@@ -11,7 +11,10 @@ const BoardSchema = new Schema({
     type: String,
     required: [true,'Description field is required']
   },
-  lists: [List]
+  lists: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'boards'
+  }
 });
 
 const Board = mongoose.model('board',BoardSchema);
