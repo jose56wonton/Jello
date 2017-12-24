@@ -12,7 +12,7 @@ import promise from 'redux-promise'
 // Components
 import BoardIndex from './components/boardIndex';
 import BoardShow from './components/boardShow';
-
+import Login from './components/login';
 // Reducers
 import reducers from './reducers';
 
@@ -29,7 +29,8 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/board/:name" component={BoardShow}/>
-      <Route path="/" component={BoardIndex} />
+
+      <Route path="/" component={Login} />
     </Switch>
   </BrowserRouter>
 </Provider>

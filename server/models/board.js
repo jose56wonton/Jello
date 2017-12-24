@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const List = require('./list');
+const ListSchema = require('./list');
 
 const BoardSchema = new Schema({
   title: {
@@ -11,11 +11,6 @@ const BoardSchema = new Schema({
     type: String,
     required: [true,'Description field is required']
   },
-  lists: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'boards'
-  }
+  lists: [ListSchema]
 });
-
-const Board = mongoose.model('board',BoardSchema);
-module.exports = Board;
+module.exports = BoardSchema;

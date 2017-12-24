@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Board = require("./board");
+const BoardSchema = require("./board");
 
 const UserSchema = new Schema({
   name: {
@@ -11,11 +11,7 @@ const UserSchema = new Schema({
     type: String,
     required: [true,'Password field is required']
   },
-  boards: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'boards',
-    required: [true,'Password field is required']
-  }
+  boards: [BoardSchema]
 });
 
 const User = mongoose.model('user',UserSchema);

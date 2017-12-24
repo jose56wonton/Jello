@@ -58,3 +58,12 @@ export function toggleTask(values){
     payload: values
   }
 }
+
+export const LOGIN = "login";
+
+export function login(values){
+  return{
+    type: LOGIN,
+    payload:values
+  }
+}

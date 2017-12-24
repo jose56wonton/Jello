@@ -6,8 +6,7 @@ const TaskSchema = new Schema({
     type: String,
     required: [true,'Title field is required']
   },
-  completed: false
+  completed: Boolean
 });
 
-const Task = mongoose.model('task',TaskSchema);
-module.exports = Task;
+module.exports = TaskSchema;

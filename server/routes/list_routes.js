@@ -2,22 +2,22 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const Board = require('../models/board');
+const List = require('../models/list');
 
-
-router.post('/boards', (req, res, next) => {
+router.post('/lists', (req, res, next) => {
   User.findById({ _id: req.body.user_id }).then((user) => {
-    const b = {title: req.body.title,
-              description: req.body.description}    
-    user.boards.push(b);
+    const l = {title: req.body.title}    
+    user.boards.id(req.body.board_id).lists.push(l);    
     user.save().then(() => {
       res.send(user);
     }).catch((err) => {
+
     })
   })
 })
-router.delete('/boards/:id', (req, res, next) => {
-  User.findById({ _id: req.body.user_id }).then((user) => {
-    user.boards.find((ele) => {
+router.delete('/lists/:id', (req, res, next) => {
+  User.findById({ _id: req.body.user_id }).then((user) => {    
+    user.boards.id(req.body.board_id).lists.find((ele) => {
       return ele._id ==req.params.id
     }).remove();
     user.save().then((user) => {
@@ -27,5 +27,4 @@ router.delete('/boards/:id', (req, res, next) => {
     })
   })
 })
-
 module.exports = router;
