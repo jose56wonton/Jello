@@ -12,7 +12,7 @@ import promise from 'redux-promise'
 // Components
 import BoardIndex from './components/boardIndex';
 import BoardShow from './components/boardShow';
-import Login from './components/login';
+
 // Reducers
 import reducers from './reducers';
 
@@ -26,11 +26,10 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 ReactDOM.render(
 <Provider store={createStoreWithMiddleware(reducers,
  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
-  <BrowserRouter >
+  <BrowserRouter>
     <Switch>
       <Route path="/board/:name" component={BoardShow}/>
-      <Route path="/board" component={BoardIndex}/>
-      <Route path="/" component={Login} />
+      <Route path="/" component={BoardIndex} />
     </Switch>
   </BrowserRouter>
 </Provider>

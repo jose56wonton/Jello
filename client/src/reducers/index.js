@@ -4,7 +4,9 @@ import ListReducer from './lists';
 import TaskReducer from './tasks';
 import UserReducer from './user';
 const rootReducer = combineReducers({
-  user: UserReducer
+  boards: BoardReducer,
+  lists: ListReducer,
+  tasks: TaskReducer
 });
 
 export default rootReducer;

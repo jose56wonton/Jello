@@ -1,7 +1,6 @@
 // Libraries
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import StackGrid from 'react-stack-grid';
 // Styles
 // Components
 import BoardCreator from './boardCreator';
@@ -14,24 +13,24 @@ import Board from './board';
 
 
 class Boards extends Component {  
-  renderBoards(){
-    
+  renderBoards(){ 
     return this.props.boards.map((board,key) =>{
       return (
-        <Board  key={key} board={board} />
+        <Board key={key} board={board} />
       );
     })
   }
   render() {
     return (
-      <StackGrid columnWidth={315}>
+      <div className="row flex-top ">
         {this.renderBoards()}
-        <BoardCreator key={Date.now()}/>        
-      </StackGrid>      
+        <BoardCreator key={Date.now()}/>
+        
+      </div>      
     );
   }
 }
 function mapStateToProps(state){
-  return {boards: state.user}
+  return {boards: state.boards}
 }
 export default connect(mapStateToProps)(Boards);
