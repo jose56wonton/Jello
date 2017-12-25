@@ -14,7 +14,8 @@ import Board from './board';
 
 
 class Boards extends Component {  
-  renderBoards(){ 
+  renderBoards(){
+    
     return this.props.boards.map((board,key) =>{
       return (
         <Board  key={key} board={board} />
@@ -31,6 +32,6 @@ class Boards extends Component {
   }
 }
 function mapStateToProps(state){
-  return {boards: state.boards}
+  return {boards: state.user}
 }
 export default connect(mapStateToProps)(Boards);

@@ -1,23 +1,28 @@
 // Libraries
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import * as actions from '../actions';
+import PropTypes from 'prop-types';
 // Styles
 import '../style/paper.css';
 import '../style/paperAdjusted.css'
 import '../style/grid.css';
 
 class Login extends Component {
-  constructor() {
-    super();
+  static contextTypes = {
+    router: PropTypes.object
+  }
+  constructor(props,context) {
+    super(props,context);
     this.onLogin = this.onLogin.bind(this);
   }
   onLogin(e){
     e.preventDefault();
-    console.log(document.getElementById('login').value);
     this.props.login({
       user: document.getElementById('login').value
-    });
+    })
+    this.context.router.history.push('/board');
   }
   render() {
     return (

@@ -7,10 +7,6 @@ const UserSchema = new Schema({
     type: String,
     required: [true,'Name field is required']
   },
-  password:{
-    type: String,
-    required: [true,'Password field is required']
-  },
   boards: [BoardSchema]
 });
 

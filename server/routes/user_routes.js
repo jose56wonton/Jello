@@ -2,14 +2,18 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
-router.post('/users', (req, res, next) => {  
-  User.create(req.body).then((user) => {    
+router.post('/users', (req, res, next) => {
+  User.create(req.body).then((user) => {
     res.send(user);
   }).catch(next);
 })
 router.get('/users/:name', (req, res, next) => {
-  User.findOne({ "name" : req.params.name }).then((user) => {
+  var promise = User.findOne({ "name": req.params.name }).exec();
+  promise.then((user) =>{
     res.send(user);
+  })
+  .catch((err) =>{
+    console.log("Error: ",err);
   })
 })
 

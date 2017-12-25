@@ -4,14 +4,20 @@ const axios = require('axios');
 export default function(state={}, action){  
   switch(action.type){    
     case LOGIN:
-      console.log(action.payload);
       axios.get(`http://localhost:3001/api/users/${action.payload.user}`)
-      .then(function (response) {
-        console.log(response);
+      .then(response => {
+        if(response.data == ""){
+          axios.post(`http://localhost:3001/api/users`,{
+            name: action.payload.user
+          }).then((user)=>{
+            console.log("user",user);
+            return user;            
+          })
+        }else{
+          console.log("response",response);
+          return response;
+        }
       })
-      .catch(function (error) {
-        console.log(error);
-      });
     default:
       return state;
   }

@@ -26,10 +26,10 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 ReactDOM.render(
 <Provider store={createStoreWithMiddleware(reducers,
  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
-  <BrowserRouter>
+  <BrowserRouter >
     <Switch>
       <Route path="/board/:name" component={BoardShow}/>
-
+      <Route path="/board" component={BoardIndex}/>
       <Route path="/" component={Login} />
     </Switch>
   </BrowserRouter>
