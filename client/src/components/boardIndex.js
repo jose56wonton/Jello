@@ -25,7 +25,8 @@ class BoardIndex extends Component {
             </div>            
           </div>
         </header>        
-        <Boards/>         
+        <Boards/>
+        <div className="footer"/>
       </div>
     );
   }

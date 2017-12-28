@@ -12,7 +12,9 @@
   display: block;
   width: 100%
 }
-
+.footer{
+  height:100px;
+}
 
 
 input,textarea {
@@ -43,3 +45,4 @@ textarea:hover {
   box-shadow: 2px 8px 8px -5px rgba(0,0,0,.3);
   transform: translate(0,2px)
 }
+

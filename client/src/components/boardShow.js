@@ -35,6 +35,7 @@ class BoardShow extends Component{
         </header>
         
         <Lists boardId={this.props.board.id} />
+        <div className="footer"/>
       </div>
     );
   }
