@@ -11,4 +11,4 @@ That said I learned a lot about backend stuff. If you want to see my first schem
 ### Plans
 As of now I actually hate this project so I don't plan on coming back to it. But I am definitely going to continue learning backend stuff, and will start a new project tomorrow.
 ### See for yourself
-Check the project out [here!](http://www.joshuawootonn.com/jello)
+Check the project out [here!](https://jose56wonton.github.io/jello/)
