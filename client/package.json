@@ -19,7 +19,7 @@
     "redux-form": "^7.2.0",
     "redux-promise": "^0.5.3"
   },
-  "homepage": "https://joshuawootonn.com/jello",
+  "homepage": "https://joshuawootonn.github.io/jello/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
